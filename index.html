@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Refresher</title>
+    <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
+    <script type="text/javascript" language="Javascript">
+
+        $(document).ready(function () {
+            var bindHover;
+            bindHover = function () {
+                $('.foo').hover(
+                
+/* 
+                        function (event) {
+                            $('#refreshBox').attr('checked', false);
+                            $('#refreshBox').click();
+                        }, function () {
+                            $('#refreshBox').attr('checked', true);
+                            $('#refreshBox').click();
+                        }
+*/
+
+												function(){
+													
+													refresh();
+													
+												},function(){
+													
+												}
+                        
+                        
+                        );
+            };
+
+            var unbindHover;
+            unbindHover = function () {
+                $('.foo').unbind('hover');
+            };
+
+            var refresh;
+            refresh = function () {
+
+                var random = (Math.random() * 999999999);
+                $('#randomBox').html(random);
+                $('.foo').attr('src', 'http://localhost/' + $('#url').val() + '?random=' + random);
+            };
+
+            var auto_refresh = null;
+
+            $('#refreshBox').change(function (event) {
+                if (auto_refresh) {
+                    clearInterval(auto_refresh);
+                }
+                auto_refresh = $(this).is(':checked') ? setInterval(refresh, 500) : null;
+            });
+
+            $('#hoverBox').change(function (event) {
+                if ($(this).is(':checked')) {
+                    unbindHover();
+                } else {
+                    bindHover();
+                }
+            });
+            
+            $('#url').click(function(event) {
+            			$(this).val('');
+            });
+            
+            $('#launch').click(function(event) {	
+            		open('http://localhost/' + $('#url').val() + '?random=' + (Math.random() * 999999999), 1 );
+            });	
+
+            var init = function () {
+                refresh();
+                bindHover();
+            };
+
+
+            init();
+
+
+        });
+    </script>
+    <style type='text/css'>
+        div.top {
+            border-bottom: 1px solid gray;
+            padding: 10px;
+            box-sizing: border-box;
+            line-height: 10px;
+            height: 40px;
+        }
+
+        div.top span {
+            margin-left: 20px;
+            float: left;
+        }
+
+        div.top span.table_wrapper {
+            width: 300px;
+        }
+
+        div.top span.table_wrapper table {
+            width: 100%;
+        }
+
+        div.top span.url_text_box_wrapper input {
+            margin-left: 80px;
+            width: 300px;
+        }
+
+        div.iframe_wrapper {
+            position: absolute;
+            top: 50px;
+            left: 0;
+            right: 0px;
+            bottom: 4px;
+        }
+
+        div.iframe_wrapper iframe.foo {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class='top '>
+    <span><input id="refreshBox" type="checkbox" value="">&nbsp;Auto Refresh </span>
+    <span><input id="hoverBox" type="checkbox" value="">&nbsp;Disable Hover </span>
+        <span class='table_wrapper'>
+	        <table>
+                <tr>
+                    <td><span id='randomBox'></span>
+                    </td>
+                    <td><span id='otherBox'>null</span>
+                    </td>
+                </tr>
+            </table>
+        </span>
+    <span class='url_text_box_wrapper '><!-- BackboneJS-AMD-Boilerplate -->
+    	<input id="url" type="" value="mobile/?id=120&"></span>
+		<span><input id="launch" type="button" value="launch"></span>
+
+</div>
+<div class='iframe_wrapper '>
+    <iframe class='foo' frameBorder="0"/>
+</div>
+</body>
