@@ -37,12 +37,19 @@
                 $('.foo').unbind('hover');
             };
 
-            var refresh;
+            var refresh, random_parm;
             refresh = function () {
 
                 var random = (Math.random() * 999999999);
                 $('#randomBox').html(random);
-                $('.foo').attr('src', 'http://' + $('#host').val() + $('#url').val() + '?random=' + (Math.random() * 999999999));
+                
+								if( $('#param').is(':checked') ){
+									random_parm = '?random=' + (Math.random() * 999999999);
+								}else{
+									random_parm = '' 
+								};
+            	
+                $('.foo').attr('src', 'http://' + $('#host').val() + $('#url').val() + random_parm);
                 
             };
 
@@ -63,12 +70,25 @@
                 }
             });
             
-            $('#url').click(function(event) {
+            
+            $('#host').click(function(event) {
             			$(this).val('');
+            });
+                        
+            $('#url').click(function(event) {
+            			$(this).val('/');
             });
             
             $('#launch').click(function(event) {	
-            		open('http://' + $('#host').val()  + $('#url').val() + '?random=' + (Math.random() * 999999999), 1 );
+            	
+            	if( $('#param').is(':checked') ){
+            		 random_parm = '?random=' + (Math.random() * 999999999);
+            	}else{
+            		 random_parm = '' 
+            	};
+            	
+            	open('http://' + $('#host').val()  + $('#url').val() + random_parm);
+            		
             });	
 
             var init = function () {
@@ -104,10 +124,23 @@
             width: 100%;
         }
 
-        div.top span.entry_text_box_wrapper input {
-            margin-left: 80px;
-            width: 90px;
+        div.top span.entry_text_box_wrapper input[type="text"] {
+            width: 140px;
+            float:left;
         }
+        div.top span.entry_text_box_wrapper input#host {
+            width: 80px;
+            float:left;
+            margin-left:50px;
+        }
+        div.top span.entry_text_box_wrapper input#param {
+            float:left;
+        } 
+        
+        div.top span.entry_text_box_wrapper input#launch {
+            float:left;
+            margin-left:50px;
+        }                               
 
         div.iframe_wrapper {
             position: absolute;
@@ -138,12 +171,13 @@
             </table>
         </span>
     <span class='entry_text_box_wrapper '>
-    	<input id="host" type="" value="localhost"></span>
+    	<input id="host" type="text" value="localhost">
     	<!-- /BackboneJS-AMD-Boilerplate -->
     	<!-- /mobile/?id=120& -->
-    	<input id="url" type="" value="/foo">
+    	<input id="url" type="text" value="/foo">
+    	<input id="param" type="checkbox" value="?" checked>
     	<input id="launch" type="button" value="launch">
-    	</span>
+    </span>
 
 </div>
 <div class='iframe_wrapper '>
