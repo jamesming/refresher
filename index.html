@@ -42,7 +42,8 @@
 
                 var random = (Math.random() * 999999999);
                 $('#randomBox').html(random);
-                $('.foo').attr('src', 'http://localhost/' + $('#url').val() + '?random=' + random);
+                $('.foo').attr('src', 'http://' + $('#host').val() + $('#url').val() + '?random=' + (Math.random() * 999999999));
+                
             };
 
             var auto_refresh = null;
@@ -67,7 +68,7 @@
             });
             
             $('#launch').click(function(event) {	
-            		open('http://localhost/' + $('#url').val() + '?random=' + (Math.random() * 999999999), 1 );
+            		open('http://' + $('#host').val()  + $('#url').val() + '?random=' + (Math.random() * 999999999), 1 );
             });	
 
             var init = function () {
@@ -103,9 +104,9 @@
             width: 100%;
         }
 
-        div.top span.url_text_box_wrapper input {
+        div.top span.entry_text_box_wrapper input {
             margin-left: 80px;
-            width: 300px;
+            width: 90px;
         }
 
         div.iframe_wrapper {
@@ -136,9 +137,13 @@
                 </tr>
             </table>
         </span>
-    <span class='url_text_box_wrapper '><!-- BackboneJS-AMD-Boilerplate -->
-    	<input id="url" type="" value="mobile/?id=120&"></span>
-		<span><input id="launch" type="button" value="launch"></span>
+    <span class='entry_text_box_wrapper '>
+    	<input id="host" type="" value="localhost"></span>
+    	<!-- /BackboneJS-AMD-Boilerplate -->
+    	<!-- /mobile/?id=120& -->
+    	<input id="url" type="" value="/foo">
+    	<input id="launch" type="button" value="launch">
+    	</span>
 
 </div>
 <div class='iframe_wrapper '>
