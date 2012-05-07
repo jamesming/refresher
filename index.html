@@ -8,28 +8,11 @@
         $(document).ready(function () {
             var bindHover;
             bindHover = function () {
-                $('.foo').hover(
-                
-/* 
-                        function (event) {
-                            $('#refreshBox').attr('checked', false);
-                            $('#refreshBox').click();
-                        }, function () {
-                            $('#refreshBox').attr('checked', true);
-                            $('#refreshBox').click();
-                        }
-*/
-
-												function(){
+                $('.foo').hover(function(){
 													
 													refresh();
 													
-												},function(){
-													
-												}
-                        
-                        
-                        );
+												});
             };
 
             var unbindHover;
@@ -147,12 +130,13 @@
             top: 50px;
             left: 0;
             right: 0px;
-            bottom: 4px;
+            bottom: 0px;
         }
 
         div.iframe_wrapper iframe.foo {
             width: 100%;
             height: 100%;
+            background:white;
         }
     </style>
 </head>
@@ -174,8 +158,8 @@
     	<input id="host" type="text" value="localhost">
     	<!-- /BackboneJS-AMD-Boilerplate -->
     	<!-- /mobile/?id=120& -->
-    	<input id="url" type="text" value="/foo">
-    	<input id="param" type="checkbox" value="?" checked>
+    	<input id="url" type="text" value="/foo/test.html">
+    	<input id="param" type="checkbox" checked >
     	<input id="launch" type="button" value="launch">
     </span>
 
