@@ -12,6 +12,8 @@
 													
 													refresh();
 													
+												},function(){
+													
 												});
             };
 
@@ -23,9 +25,6 @@
             var refresh, random_parm;
             refresh = function () {
 
-                var random = (Math.random() * 999999999);
-                $('#randomBox').html(random);
-                
 								if( $('#param').is(':checked') ){
 									random_parm = '?random=' + (Math.random() * 999999999);
 								}else{
@@ -77,6 +76,9 @@
             var init = function () {
                 refresh();
                 bindHover();
+                
+                
+                
             };
 
 
@@ -87,7 +89,6 @@
     </script>
     <style type='text/css'>
         div.top {
-            border-bottom: 1px solid gray;
             padding: 10px;
             box-sizing: border-box;
             line-height: 10px;
@@ -144,16 +145,6 @@
 <div class='top '>
     <span><input id="refreshBox" type="checkbox" value="">&nbsp;Auto Refresh </span>
     <span><input id="hoverBox" type="checkbox" value="">&nbsp;Disable Hover </span>
-        <span class='table_wrapper'>
-	        <table>
-                <tr>
-                    <td><span id='randomBox'></span>
-                    </td>
-                    <td><span id='otherBox'>null</span>
-                    </td>
-                </tr>
-            </table>
-        </span>
     <span class='entry_text_box_wrapper '>
     	<input id="host" type="text" value="localhost">
     	<!-- /BackboneJS-AMD-Boilerplate -->
