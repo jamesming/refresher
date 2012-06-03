@@ -4,21 +4,12 @@
     <title>Refresher</title>
     <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
     <script type="text/javascript" language="Javascript">
-    	
-    	
-    		var iframeAction = function(){
-						//   $('iframe').contents().find('body')
-						//                          .append('<div>Hello iframe</div>');
-						        
-						//  $('iframe').contentWindow.func = function() {alert("test")};                      
-						        
-						// http://stackoverflow.com/questions/9534001/want-to-call-a-function-if-iframe-doesnt-load-or-loads
-    		};
+
 
         $(document).ready(function () {
             var bindHover;
             bindHover = function () {
-                $('.foo').hover(function(){
+                $('.iframe').hover(function(){
 													
 													refresh();
 													
@@ -29,7 +20,7 @@
 
             var unbindHover;
             unbindHover = function () {
-                $('.foo').unbind('hover');
+                $('.iframe').unbind('hover');
             };
 
             var refresh, random_parm;
@@ -41,7 +32,7 @@
 									random_parm = '' 
 								};
             	
-                $('.foo').attr('src', 'http://' + $('#host').val() + $('#url').val() + random_parm);
+                $('.iframe').attr('src', 'http://' + $('#host').val() + $('#url').val() + random_parm);
                 
             };
 
@@ -124,13 +115,20 @@
             float:left;
             margin-left:50px;
         }
-        div.top span.entry_text_box_wrapper input#param {
+        div.top span.entry_text_box_wrapper input#param{
             float:left;
         } 
         
+        div.top span.entry_text_box_wrapper input#completeApp{
+            margin-left:50px;        	
+            float:left;
+        }          
+        div.top span.entry_text_box_wrapper input#module{
+            float:left;
+        }     
+        
         div.top span.entry_text_box_wrapper input#launch {
             float:left;
-            margin-left:50px;
         }                               
 
         div.iframe_wrapper {
@@ -141,7 +139,7 @@
             bottom: 0px;
         }
 
-        div.iframe_wrapper iframe.foo {
+        div.iframe_wrapper iframe.iframe {
             width: 100%;
             height: 100%;
             background:white;
@@ -155,15 +153,21 @@
     <span class='entry_text_box_wrapper '>
     	<input id="host" type="text" value="localhost">
     	<!-- /BackboneJS-AMD-Boilerplate -->
-    	<!-- /mobile/?id=120& -->
+    	<!--/mobile/?id=120&  -->
     	<!-- /foo/test.html -->
+    	<!---->
     	<input id="url" type="text" value="/prospace/index.html">
     	<input id="param" type="checkbox" checked >
     	<input id="launch" type="button" value="launch">
+    	
+    	<input id="completeApp" type="checkbox"  >
+    	<input id="module" type="text" value="gallery">
+    	
+    	
     </span>
 
 </div>
 <div class='iframe_wrapper '>
-    <iframe class='foo' frameBorder="0" onload="window.iframeAction()"/>
+    <iframe class='iframe' frameBorder="0" />
 </div>
 </body>
