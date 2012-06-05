@@ -72,6 +72,17 @@
             	
             	open('http://' + $('#host').val()  + $('#url').val() + random_parm);
             		
+            });
+            
+            $('#toggleHost').click(function(event) {
+            	
+            			if(!$('#toggleHost').is(':checked') ){
+		            			$('#url').val($('#url').data('orig'));             				
+            			}else{
+		            			$('#url').data('orig', $('#url').val());
+		            			$('#url').val( $('#url2').val() );            				
+            			};
+
             });	
 
             var init = function () {
@@ -150,13 +161,16 @@
 <div class='top '>
     <span><input id="refreshBox" type="checkbox" value="">&nbsp;Auto Refresh </span>
     <span><input id="hoverBox" type="checkbox" value="">&nbsp;Disable Hover </span>
+    <span>&nbsp;<input id="toggleHost" type="checkbox" value=""   style='width:20px'  >Toggle Host</span>
     <span class='entry_text_box_wrapper '>
     	<input id="host" type="text" value="localhost">
     	<!-- /BackboneJS-AMD-Boilerplate -->
-    	<!--/mobile/?id=120&  -->
+    	<!--/mobile/?id=178&  -->
     	<!-- /foo/test.html -->
     	<!---->
-    	<input id="url" type="text" value="/prospace/index.html">
+    	
+    	<input id="url" type="text" value="/mobile/?id=178&">
+    	<input id="url2" type="hidden" value="/prospace/index.html">
     	<input id="param" type="checkbox" checked >
     	<input id="launch" type="button" value="launch">
     	
