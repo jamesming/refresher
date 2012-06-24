@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <title>Refresher</title>
@@ -117,7 +117,9 @@
             width: 100%;
         }
 
-        div.top span.entry_text_box_wrapper input[type="text"] {
+         div.top span.entry_text_box_wrapper input[type="text"] 
+        ,div.top span.entry_text_box_wrapper select 
+        {
             width: 140px;
             float:left;
         }
@@ -159,27 +161,38 @@
 </head>
 <body>
 <div class='top '>
-    <span><input id="refreshBox" type="checkbox" value="">&nbsp;Auto Refresh </span>
-    <span><input id="hoverBox" type="checkbox" value="">&nbsp;Disable Hover </span>
-    <span>&nbsp;<input id="toggleHost" type="checkbox" value=""   style='width:20px'  >Toggle Host</span>
+    <span><input id="refreshBox" type="checkbox" value="">&nbsp;Refresh </span>
+    <span><input id="hoverBox" type="checkbox" value="">&nbsp;Kill hover </span>
+    <span>&nbsp;<input id="toggleHost" type="checkbox" value=""   style='width:20px'  >Toggle</span>
     <span class='entry_text_box_wrapper '>
+    	<select id='app'>
+    		<option value='pongo'>pongo</option>
+    		<option value='prospace'>prospace</option>
+    		<option value='schoolbright'>schoolbright</option>
+    		<option value='simplist'>simplist</option>
+    		<option value='scenecredit'>scenecredit</option>
+    		<option  selected value='test_gallery'>test</option>
+    	</select>
     	<input id="host" type="text" value="localhost">
     	<!-- /BackboneJS-AMD-Boilerplate -->
-    	<!--/mobile/?id=178&  -->
+    	<!--  -->
     	<!-- /foo/test.html -->
-    	<!---->
+    	<!--/prospace/index.html-->
     	
-    	<input id="url" type="text" value="/mobile/?id=178&">
-    	<input id="url2" type="hidden" value="/prospace/index.html">
+    	<input id="url" type="text" value="/prospace/index.html">
+    	<input id="url2" type="hidden" value="/mobile/?id=178&">
     	<input id="param" type="checkbox" checked >
-    	<input id="launch" type="button" value="launch">
-    	
+    	<input id="launch" type="button" value=">">
+<!--   	
+    	<input id="single_module" type="checkbox"  checked>
+    	<input id="module" type="text" value="image_sample">
+    	<input id="module2" type="text" value="upload">
+    	<input id="module3" type="text" value="modal">checked
+  -->     	
     	<input id="single_module" type="checkbox"  >
-    	<input id="module" type="text" value="gallery">
+    	<input id="module" type="text" value="">
     	<input id="module2" type="text" value="">
-    	<input id="module3" type="text" value="">
-    	
-    	
+    	<input id="module3" type="text" value="">   	
     </span>
 
 </div>
