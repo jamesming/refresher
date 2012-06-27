@@ -65,12 +65,12 @@
             $('#launch').click(function(event) {	
             	
             	if( $('#param').is(':checked') ){
-            		 random_parm = '?random=' + (Math.random() * 999999999);
+            		 random_parm = '&random=' + (Math.random() * 999999999);
             	}else{
             		 random_parm = '' 
             	};
             	
-            	open('http://' + $('#host').val()  + $('#url').val() + random_parm);
+            	open('http://' + $('#host').val()  + $('#url').val() + '?app=' + $('#app').val() +  random_parm);
             		
             });
             
