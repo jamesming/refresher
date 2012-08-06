@@ -2,100 +2,6 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <title>Refresher</title>
-    <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
-    <script type="text/javascript" language="Javascript">
-
-
-        $(document).ready(function () {
-            var bindHover;
-            bindHover = function () {
-                $('.iframe').hover(function(){
-													
-													refresh();
-													
-												},function(){
-													
-												});
-            };
-
-            var unbindHover;
-            unbindHover = function () {
-                $('.iframe').unbind('hover');
-            };
-
-            var refresh, random_parm;
-            refresh = function () {
-
-								if( $('#param').is(':checked') ){
-									random_parm = '?random=' + (Math.random() * 999999999);
-								}else{
-									random_parm = '' 
-								};
-            	
-                $('.iframe').attr('src', 'http://' + $('#host').val() + $('#url').val() + random_parm);
-                //document.location.reload();
-            };
-
-            var auto_refresh = null;
-
-            $('#refreshBox').change(function (event) {
-                if (auto_refresh) {
-                    clearInterval(auto_refresh);
-                }
-                auto_refresh = $(this).is(':checked') ? setInterval(refresh, 1000) : null;
-            });
-
-            $('#hoverBox').change(function (event) {
-                if ($(this).is(':checked')) {
-                    unbindHover();
-                } else {
-                    bindHover();
-                }
-            });
-            
-            
-            $('#host').click(function(event) {
-            		$(this).val('');
-            });
-                        
-            $('#url').click(function(event) {
-            		// $(this).val('/');
-            });
-            
-            $('#launch').click(function(event) {	
-            	
-            	if( $('#param').is(':checked') ){
-            		 random_parm = '&random=' + (Math.random() * 999999999);
-            	}else{
-            		 random_parm = '' 
-            	};
-            	
-            	open('http://' + $('#host').val()  + $('#url').val() + '?app=' + $('#app').val() +  random_parm);
-            		
-            });
-            
-            $('#toggleHost').click(function(event) {
-            	
-            			if(!$('#toggleHost').is(':checked') ){
-		            			$('#url').val($('#url').data('orig'));             				
-            			}else{
-		            			$('#url').data('orig', $('#url').val());
-		            			$('#url').val( $('#url2').val() );            				
-            			};
-
-            });	
-
-            var init = function () {
-                refresh();
-                bindHover();
-            };
-
-
-            init();
-
-
-        });
-    </script>
     <style type='text/css'>
         div.top {
             padding: 10px;
@@ -157,7 +63,105 @@
             height: 100%;
             background:white;
         }
-    </style>
+    </style>    
+    <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
+    <script type="text/javascript" language="Javascript">
+
+
+        $(document).ready(function () {
+        	
+            var  bindHover
+            		,refresh
+            		,random_parm
+            		,unbindHover
+            		,auto_refresh = null;
+            		
+            bindHover = function () {
+                $('.iframe').hover(function(){
+													
+													refresh();
+													
+												},function(){});
+            };
+
+            unbindHover = function () {
+                $('.iframe').unbind('hover');
+            };
+
+            refresh = function () {
+
+								if( $('#param').is(':checked') ){
+									random_parm = '?random=' + (Math.random() * 999999999);
+								}else{
+									random_parm = '' 
+								};
+            	
+                $('.iframe').attr('src', 'http://' + $('#host').val() + $('#url').val() + '&' +random_parm);
+                
+            };
+
+
+            $('#refreshBox').change(function (event) {
+                if (auto_refresh) {
+                    clearInterval(auto_refresh);
+                }
+                auto_refresh = $(this).is(':checked') ? setInterval(refresh, 1000) : null;
+            });
+
+            $('#hoverBox').change(function (event) {
+                if ($(this).is(':checked')) {
+                    unbindHover();
+                } else {
+                    bindHover();
+                }
+            });
+            
+            
+            $('#host').click(function(event) {
+            		$(this).val('');
+            });
+                        
+            $('#url').click(function(event) {
+            		// $(this).val('/');
+            });
+            
+            $('#launch').click(function(event) {	
+            	
+            	if( $('#param').is(':checked') ){
+            		 random_parm = '&random=' + (Math.random() * 999999999);
+            	}else{
+            		 random_parm = '' 
+            	};
+            	
+            	open('http://' + $('#host').val()  + $('#url').val() + '?app=' + $('#app').val() +  random_parm);
+            		
+            });
+            
+            $('#toggleHost').click(function(event) {
+            	
+            			if(!$('#toggleHost').is(':checked') ){
+		            			$('#url').val($('#url').data('orig'));             				
+            			}else{
+		            			$('#url').data('orig', $('#url').val());
+		            			$('#url').val( $('#url2').val() );            				
+            			};
+
+            });	
+
+            var init = function () {
+                refresh();
+                bindHover();
+            };
+
+
+            init();
+
+
+        });
+        
+        
+    </script>
+
 </head>
 <body>
 <div class='top '>
@@ -175,9 +179,13 @@
     		<option value='gallery'>gallery</option>
     	</select>
     	<input id="host" type="text" value="localhost">
-    	
-    	<input id="url" type="text" value="/modest/index.html">
-    	<input id="url2" type="hidden" value="/republic-project/index.php/c_photos">
+    	<!-- rp.local -->
+    	<!--  -->
+    	<!--  -->
+    	<!-- /baubler/ -->
+    	<!--  -->
+    	<input id="url" type="text" value="/mobile/index.html?id=188">
+    	<input id="url2" type="hidden" value="/modest/index.html">
     	<input id="url" type="hidden" value="/mobile/index.html?id=188&cache_buster=asdfd&unit=3">
     	<input id="param" type="checkbox" checked >
     	<input id="launch" type="button" value=">">
