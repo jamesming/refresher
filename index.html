@@ -63,14 +63,17 @@
             height: 100%;
             background:white;
         }
-    </style>    
-    <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
+    </style>
+   
+    <script src="http://localhost/gopongo/js/libs/jquery/jquery.1.8.1.min.js"></script>
+    <!--   <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>-->
+   
     <script type="text/javascript" language="Javascript">
 
 
         $(document).ready(function () {
         	
-            var  bindHover
+            var  	 bindHover
             		,refresh
             		,random_parm
             		,unbindHover
@@ -79,9 +82,9 @@
             bindHover = function () {
                 $('.iframe').hover(function(){
 													
-													refresh();
-													
-												},function(){});
+					refresh();
+					
+				},function(){});
             };
 
             unbindHover = function () {
@@ -95,8 +98,11 @@
 								}else{
 									random_parm = '' 
 								};
+								
+								random_parm = '?random=' + (Math.random() * 999999999);
             	
-                $('.iframe').attr('src', 'http://' + $('#host').val() + $('#url').val() + '&' +random_parm);
+//                $('.iframe').attr('src', 'http://' + $('#host').val() + $('#url').val() + '?v=' +random_parm);
+                $('.iframe').attr('src', 'http://' + $('#host').val() + $('#url').val() );
                 
             };
 
@@ -133,7 +139,7 @@
             		 random_parm = '' 
             	};
             	
-            	open('http://' + $('#host').val()  + $('#url').val() + '?app=' + $('#app').val() +  random_parm);
+            	open('http://' + $('#host').val()  + $('#url').val() + '?random=' +  (Math.random() * 999999999));
             		
             });
             
@@ -170,6 +176,7 @@
     <span>&nbsp;<input id="toggleHost" type="checkbox" value=""   style='width:20px'  >Toggle</span>
     <span class='entry_text_box_wrapper '>
     	<select id='app'>
+    		<option  selected value='giftofme'>giftofme</option>
     		<option  selected value='baubler'>baubler</option>
     		<option value='pongo'>pongo</option>
     		<option value='prospace'>prospace</option>
@@ -178,21 +185,39 @@
     		<option value='scenecredit'>scenecredit</option>
     		<option value='gallery'>gallery</option>
     	</select>
-    	<input id="host" type="text" value="localhost">
-    	<!-- rp.local -->
-    	<!--  -->
-    	<!--  -->
-    	<!-- /baubler/ -->
-    	<!--  -->
-    	<input id="url" type="text" value="/mobile/index.html?id=188">
-    	<input id="url2" type="hidden" value="/modest/index.html">
-    	<input id="url" type="hidden" value="/mobile/index.html?id=188&cache_buster=asdfd&unit=3">
-    	<input id="param" type="checkbox" checked >
+    	
+    	<!--/localhost -->    
+    	<!--    	<input id="host" type="text" value="rp.local"  >   	
+    
+    	-->     	
+    		<input id="host" type="text" value="localhost"  style='display:none' > 	
+
+
+    	<!--  &cache_buster=asdfd&unit=3-->
+
+    	<!--  /baubler-->
+    	<!--  /mobile/index.html?id=188&-->
+    	<!--  /modest/index.html-->
+    	<!--  carousel-->
+    	<!--  /frontend/v1.3/html/index.html?id=188&-->
+    	<!-- /baubler/search -->
+    	<!--  /gopongo-->
+    	<!--  /mobile/test/mobile_adtag.html?&-->
+    	<!--  /mobile/test/adtag.html-->
+    	<!--
+    		<input id="url" type="text" value="/campaign/preview/browser?p=1&c=1&flash_disabled=true&debug=1"  style='width:600px'  > 
+   
+    	
+    		
+    	  -->   <input id="url" type="text" value="/prospace/_"  > 
+    	<input id="url2" type="hidden" value="">
+    	<input id="url" type="hidden" value=">
+    	<input id="param" type="checkbox" checked  style='display:none'>
     	<input id="launch" type="button" value=">">
-    	<input id="single_module" type="checkbox"  >
-    	<input id="module" type="text" value="">
-    	<input id="module2" type="text" value="">
-    	<input id="module3" type="text" value="">   	
+    	<input id="single_module" type="checkbox"  style='display:none' >
+    	<input id="module" type="text" value="" style='display:none' >
+    	<input id="module2" type="text" value="" style='display:none' >
+    	<input id="module3" type="text" value="" style='display:none' >   	
     </span>
 
 </div>
