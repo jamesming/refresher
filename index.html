@@ -80,15 +80,15 @@
             		,auto_refresh = null;
             		
             bindHover = function () {
-                $('.iframe').hover(function(){
-													
-					refresh();
-					
-				},function(){});
+                $('div.top').hover(function(){
+																	
+									refresh();
+									
+								},function(){});
             };
 
             unbindHover = function () {
-                $('.iframe').unbind('hover');
+                $('div.top').unbind('hover');
             };
 
             refresh = function () {
@@ -175,22 +175,12 @@
     <span><input id="hoverBox" type="checkbox" value="">&nbsp;Kill hover </span>
     <span>&nbsp;<input id="toggleHost" type="checkbox" value=""   style='width:20px'  >Toggle</span>
     <span class='entry_text_box_wrapper '>
-    	<select id='app'>
-    		<option  selected value='giftofme'>giftofme</option>
-    		<option  selected value='baubler'>baubler</option>
-    		<option value='pongo'>pongo</option>
-    		<option value='prospace'>prospace</option>
-    		<option value='schoolbright'>schoolbright</option>
-    		<option value='simplist'>simplist</option>
-    		<option value='scenecredit'>scenecredit</option>
-    		<option value='gallery'>gallery</option>
-    	</select>
     	
     	<!--/localhost -->    
     	<!--    	<input id="host" type="text" value="rp.local"  >   	
     
     	-->     	
-    		<input id="host" type="text" value="localhost"  style='display:none' > 	
+    		<input id="host" type="text" value="localhost"   > 	
 
 
     	<!--  &cache_buster=asdfd&unit=3-->
